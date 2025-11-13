@@ -2,9 +2,9 @@ const stringRepOf = (array, i, j) => {
 
   const temp =
     array.map(el => '🟩'.repeat(el));
-  temp[i] = '⬜️'.repeat(array[i]);
-  temp[j] = '🟥'.repeat(array[j]);
-  return temp.join('\n');
+  temp[i] = '⬜️'.repeat(array[i]).concat(array[i]);
+  temp[j] = '🟥'.repeat(array[j]).concat(array[j]);
+  return temp.join('\n') + '\n\n' + array.toString();
 };
 
 const delay = () => { for (let _ = 0; _ < 10e8 * 2; _++); };
