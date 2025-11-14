@@ -1,13 +1,16 @@
-const stringRepOf = (array, i, j) => {
+const stringRepOf = (array = [], i, j) => {
+  const sortedHalf = array.slice(0, i);
+  const unsorted = array.slice(i);
 
-  const temp =
-    array.map(el => '🟩'.repeat(el));
-  temp[i] = '⬜️'.repeat(array[i]).concat(array[i]);
-  temp[j] = '🟥'.repeat(array[j]).concat(array[j]);
+  const temp = sortedHalf
+    .map(el => (el + '').padEnd(3) + '🟨'.repeat(el))
+    .concat(unsorted.map((el) => (el + '').padEnd(3) + '🟩'.repeat(el)));
+
+  temp[i] = ((array[i] + '').padEnd(3)).concat('⬜️'.repeat(array[i]));
+  temp[j] = ((array[j] + '').padEnd(3)).concat('🟥'.repeat(array[j]));
   return temp.join('\n') + '\n\n' + array.toString();
 };
-
-const delay = () => { for (let _ = 0; _ < 10e8 * 2; _++); };
+const delay = () => { for (let _ = 0; _ < 10e8; _++); };
 
 const animate = (str) => {
   console.log(str);
@@ -31,7 +34,8 @@ const sort = (arr) => {
 
   }
 
-  console.log(stringRepOf(arr));
+  console.log(stringRepOf(arr, Infinity, -Infinity));
   return arr;
 };
-(sort([2, 5, 11, 7, 3, 1]));
+
+sort([2, 5, 11, 7, 3, 1]);
