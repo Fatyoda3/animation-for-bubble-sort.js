@@ -12,24 +12,19 @@ const graph = () => {
   }
 
   let offset = 0;
-  for (let rowPos = 0; rowPos < array.length; rowPos += 1) {
-    const barLen = array[rowPos];
-
-    for (let column = 0; column < barLen; column += 1) {
-      const currentColumn = column + (DIMENSION - barLen);
+  for (let colPos = 0; colPos < array.length; colPos += 1) {
+    const barWeight = array[colPos];
+    for (let row = 0; row < barWeight; row += 1) {
+      const currentRow = row + (DIMENSION - barWeight);
+      grid[currentRow][colPos + 1 + offset] = '*';
       // console.log(currentColumn, currentColumn + 1);
-      grid[currentColumn][rowPos + offset] = '|';
-      grid[currentColumn][rowPos + 2 + offset] = '|';
+      grid[currentRow][colPos + offset] = '|';
+      grid[currentRow][colPos + 2 + offset] = '|';
     }
     offset += 2;
 
   };
 
-  /* 
-  __
-  | |
-  | |
-  */
   return grid.map(row => row.join('')).join('\n');
 };
 console.log(graph());;
