@@ -1,14 +1,16 @@
-const stringRepOf = (array = [], i, j) => {
-  const sortedHalf = array.slice(0, i);
-  const unsorted = array.slice(i);
+const pad = el => (`${el}`).padEnd(3);
+const repeatBlock = (repeat, block) => (pad(repeat)).concat(block.repeat(repeat));
+const stringRepOf = (array, i, j) => {
+  const sortedPart = array.slice(0, i);
+  const remainingPart = array.slice(i);
 
-  const temp = sortedHalf
-    .map(el => (el + '').padEnd(3) + '🟨'.repeat(el))
-    .concat(unsorted.map((el) => (el + '').padEnd(3) + '🟩'.repeat(el)));
+  const temp = sortedPart
+    .map(el => repeatBlock(el, '🟨'))
+    .concat(remainingPart.map((el) => repeatBlock(el, '🟩')));
 
-  temp[i] = ((array[i] + '').padEnd(3)).concat('⬜️'.repeat(array[i]));
-  temp[j] = ((array[j] + '').padEnd(3)).concat('🟥'.repeat(array[j]));
-  return temp.join('\n') + '\n\n' + array.toString();
+  temp[i] = repeatBlock(array[i], '⬜️');
+  temp[j] = repeatBlock(array[j], '🟥');
+  return `${temp.join('\n')}\n\n${array.toString()}`;
 };
 const delay = () => { for (let _ = 0; _ < 10e8; _++); };
 
