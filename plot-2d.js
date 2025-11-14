@@ -1,8 +1,8 @@
 // const barLen = 3;
-const DIMENSION = 15;
+const DIMENSION = 20;
 // swirl in 2d rotate and reach center 
-const array = [1, 1, 3, 4];
-const CELL = '_';
+const array = [1, 1, 15, 13, 4, 5];
+const CELL = ' ';
 const graph = () => {
   const grid = [];
 
@@ -20,7 +20,7 @@ const graph = () => {
       grid[currentColumn][rowPos + offset] = '|';
       grid[currentColumn][rowPos + 1 + offset] = '|';
     }
-    offset++;
+    offset += 2;
 
   };
 
