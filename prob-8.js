@@ -1,4 +1,4 @@
-const isVowel = c => 'aeiou'.includes(c);
+const isVowel = c => 'EeaAiouIOU'.includes(c);
 
 const findVowels = arr => {
   return arr.reduce((vowels, curr) => {

@@ -15,8 +15,7 @@ const leastDistancePair = (pairs) => {
   let pairMin = [];
   let min = Infinity;
   for (const dPair in dPairs) {
-    // console.log(pairMin, min, typeof dPair, parseInt(min) > parseInt(dPair));
-    // console.log(x);
+
     if (min >= dPair) {
       min = dPair;
       pairMin = dPairs[min];
@@ -25,6 +24,7 @@ const leastDistancePair = (pairs) => {
 
   return pairMin;
 };
+
 const t = leastDistancePair([[0, 0], [1, 1], [5, 0], [1, 0]]);
 const targetPair = [[1, 1], [1, 0]];
 console.log(t, JSON.stringify(targetPair) === JSON.stringify(t));

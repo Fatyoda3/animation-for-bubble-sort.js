@@ -1,5 +1,6 @@
 const pad = el => (`${el}`).padEnd(3);
 const repeatBlock = (repeat, block) => (pad(repeat)).concat(block.repeat(repeat));
+
 const stringRepOf = (array, i, j) => {
   const sortedPart = array.slice(0, i);
   const remainingPart = array.slice(i);
@@ -10,6 +11,7 @@ const stringRepOf = (array, i, j) => {
 
   temp[i] = repeatBlock(array[i], '⬜️');
   temp[j] = repeatBlock(array[j], '🟥');
+
   return `${temp.join('\n')}\n\n${array.toString()}`;
 };
 const delay = () => { for (let _ = 0; _ < 10e8; _++); };
