@@ -1,30 +1,37 @@
-// const barLen = 3;
 const DIMENSION = 20;
 // swirl in 2d rotate and reach center 
 const CELL = ' ';
-const array = [1, 2, 3];
-const graph = () => {
+
+const plotBarGraph = (barWeights) => {
   const grid = [];
   const row = CELL.repeat(DIMENSION);
+
   for (let column = 0; column < DIMENSION; column++) {
-    const cells = row.split(''); //value is column count and index is row ;
+    const cells = row.split('');
     grid.push(cells);
   }
 
-  let offset = 0;
-  for (let colPos = 0; colPos < array.length; colPos += 1) {
-    const barWeight = array[colPos];
+  let columnOffset = 0;
+  for (let colPos = 0; colPos < barWeights.length; colPos += 1) {
+    const barWeight = barWeights[colPos];
+    const rowOffset = (DIMENSION - barWeight);
+
     for (let row = 0; row < barWeight; row += 1) {
-      const currentRow = row + (DIMENSION - barWeight);
-      grid[currentRow][colPos + 1 + offset] = '*';
-      // console.log(currentColumn, currentColumn + 1);
-      grid[currentRow][colPos + offset] = '|';
-      grid[currentRow][colPos + 2 + offset] = '|';
+
+      const x = row + rowOffset;
+
+      const y = colPos + columnOffset;
+      grid[rowOffset - 1][y + 1] = '_';
+      grid[x][y] = '|';
+      grid[x][y + 2] = '|';
     }
-    offset += 2;
+
+    columnOffset += 2;
 
   };
 
   return grid.map(row => row.join('')).join('\n');
 };
-console.log(graph());;
+
+const array = [1, 2, 3, 9, 3, 2];
+console.log(plotBarGraph(array));;

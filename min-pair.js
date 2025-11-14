@@ -1,6 +1,6 @@
-
 const distance = (dx, dy) => Math.sqrt(dx ** 2, dy ** 2);
 const difference = (p1, p2) => [p1[0] - p2[0], p1[1] - p2[1]];
+
 const leastDistancePair = (pairs) => {
   const dPairs = {};
   for (let i = 0; i < pairs.length; i++) {
