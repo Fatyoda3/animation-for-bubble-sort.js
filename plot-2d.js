@@ -24,12 +24,12 @@ const plotBarGraph = (barWeights) => {
       console.log(x, y);
       // grid[rowOffset][DIMENSION - 1] = 1;
       grid[peakX][y + 1] = '_';//set the top of 
-      grid[peakX][y + 2] = '_';
-      grid[peakX][y + 1] = `${barWeight}`;
+      grid[peakX + 1][y + 1] = `${barWeight}`;
+      // grid[peakX][y + 2] = '_';
       grid[x][y] = '|';
-      grid[x][y + 3] = '|';
+      grid[x][y + 2] = '|';
     }
-    spaceBetweenBar += 4;
+    spaceBetweenBar += 3;
   };
   grid[DIMENSION - 1 - 6][DIMENSION - 30] = 't';
 
