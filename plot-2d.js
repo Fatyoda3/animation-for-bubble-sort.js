@@ -14,27 +14,29 @@ const plotBarGraph = (barWeights) => {
   let spaceBetweenBar = 0;
 
   for (let colPos = 0; colPos < barWeights.length; colPos += 1) {
-    const barWeight = barWeights[colPos];
+    const label = `${barWeights[colPos]}`;/* .split(''); */
+    const barWeight = barWeights[colPos] % DIMENSION;
     const rowOffset = DIMENSION - barWeight;
     const peakX = rowOffset - 1;
     for (let row = 0; row < barWeight; row += 1) {
       const x = row + rowOffset;
       const y = colPos + spaceBetweenBar;
-
+      // label.forEach((el, index) => grid[peakX + index - label.length][y + 1] = el);
       console.log(x, y);
       // grid[rowOffset][DIMENSION - 1] = 1;
       grid[peakX][y + 1] = '_';//set the top of 
-      grid[peakX + 1][y + 1] = `${barWeight}`;
+      grid[peakX + 1][y + 1] = `${label/* .join('') */}`;
       // grid[peakX][y + 2] = '_';
       grid[x][y] = '|';
       grid[x][y + 2] = '|';
     }
+
     spaceBetweenBar += 3;
   };
-  grid[DIMENSION - 1 - 6][DIMENSION - 30] = 't';
+  //debug // grid[DIMENSION - 1 - 6][DIMENSION - 30] = 't';
 
   return grid.map(row => row.join('')).join('\n');
 };
 
-const array = [1, 2, 3, 9, 3, 2, 4];
+const array = [1, 2, 3, 9, 3, 2, 4, 12, 233];
 console.log(plotBarGraph(array));;
