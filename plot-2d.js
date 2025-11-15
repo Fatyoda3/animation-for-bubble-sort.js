@@ -20,15 +20,18 @@ const plotBarGraph = (barWeights) => {
     for (let row = 0; row < barWeight; row += 1) {
       const x = row + rowOffset;
       const y = colPos + spaceBetweenBar;
+
       console.log(x, y);
-
-      grid[peakX][y + 1] = '_';
+      // grid[rowOffset][DIMENSION - 1] = 1;
+      grid[peakX][y + 1] = '_';//set the top of 
+      grid[peakX][y + 2] = '_';
+      grid[peakX][y + 1] = `${barWeight}`;
       grid[x][y] = '|';
-      grid[x][y + 2] = '|';
+      grid[x][y + 3] = '|';
     }
-
-    spaceBetweenBar += 2;
+    spaceBetweenBar += 4;
   };
+  grid[DIMENSION - 1 - 6][DIMENSION - 30] = 't';
 
   return grid.map(row => row.join('')).join('\n');
 };
